@@ -156,6 +156,9 @@ function draw(time) {
     // levelBar level up
     nextStage = levelBar.physics()
     if(nextStage) {
+      // Joxia : chaque barre de niveau remplie = 1 point au classement du hub
+      GAME.joxiaLevels = (GAME.joxiaLevels || 0) + 1
+      if (window.joxiaScore) window.joxiaScore(GAME.joxiaLevels)
       GAME.levelBallParticles = levelBallParticles.concat(levelBar.toParticles(levelBalls))
       levelBalls.nextColors = levelBar.colors.slice(0, 2)
 
